@@ -70,4 +70,18 @@ contract salary {
     function chackEther() public view returns(uint){
         return address(this).balance;
     }
+
+
+    function rename(uint index, string memory _str) public onlyOwner{
+        for(uint i = 0;i < sals.length; i++){
+            sals[index].workerName = _str;
+        }
+    }
 }
+
+// 0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199   10003
+// 0xdD2FD4581271e230360230F9337D5c0430Bf44C0   10003
+
+// 1000000000000000000
+
+// 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 contract
