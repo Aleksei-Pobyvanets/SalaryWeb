@@ -1,4 +1,6 @@
 import logo from './logo.svg';
+
+import { ethers } from 'ethers';
 import { useState } from 'react';
 
 import './App.css';
@@ -16,7 +18,7 @@ function App() {
         if(typeof window.ethereum != "udefined"){
           await reqestAcc();
 
-          const provider = new ethers.providers.Web3Provider(window.ethereum)
+          const provider = new ethers.providers.Web3Provider(window.ethereum);
         }
     }
 
