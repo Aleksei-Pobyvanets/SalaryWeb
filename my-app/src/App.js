@@ -2,24 +2,37 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  async function reqestAcc() {
+    console.log("reqesting account")
+
+    if(window.ethereum) {
+      console.log("desited")
+
+      try{
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        console.log(accounts)
+      } catch (error) {
+        console.log("error cant connect")
+      }
+
+    } else {
+      console.log("Metamask not desited")
+    }
+  }
+  
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <button onClick={reqestAcc}>Connect</button>
+        <h3>Walet Address ....</h3>
       </header>
     </div>
   );
+
 }
 
 export default App;
