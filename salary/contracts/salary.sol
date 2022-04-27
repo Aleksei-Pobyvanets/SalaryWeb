@@ -12,6 +12,7 @@ contract salary {
         uint salForHour;
         uint workedHours;
         bool doneSalary;
+        uint timeLastSalary;
     }
 
     Sal[] public sals;
@@ -19,7 +20,7 @@ contract salary {
     // event WorkerCreated(uint index, string itemName, uint startingPrice, uint duration);
     // event WorkerTakesSalary(uint index, uint finalPrice, address winner);
 
-    event AddWorker(string workerName, address worker, uint salForHour, uint workedHours);
+    event AddWorker(string workerName, address worker, uint salForHour, uint workedHours, uint timeLastSalary);
 
     constructor() {
         owner = msg.sender;
@@ -40,12 +41,13 @@ contract salary {
             worker: _worker,
             salForHour: _salForHour,
             workedHours: _workedHours,
-            doneSalary: false
+            doneSalary: false,
+            timeLastSalary: block.timestamp
         });
 
         sals.push(newWorkerSal);
 
-        emit AddWorker(_workerName, _worker, _salForHour, _workedHours);
+        emit AddWorker(_workerName, _worker, _salForHour, _workedHours, block.timestamp);
     }
 
 
@@ -62,6 +64,7 @@ contract salary {
             if(sals[i].doneSalary != true){
                 sals[i].worker.transfer(sals[i].salForHour * sals[i].workedHours);
                 sals[i].doneSalary = true;
+                sals[i].timeLastSalary = block.timestamp;
             }
         }
     }
