@@ -11,12 +11,15 @@ contract salary {
         address payable worker;
         uint salForHour;
         uint workedHours;
+        bool doneSalary;
     }
 
     Sal[] public sals;
 
     // event WorkerCreated(uint index, string itemName, uint startingPrice, uint duration);
     // event WorkerTakesSalary(uint index, uint finalPrice, address winner);
+
+    event AddWorker(string workerName, address worker, uint salForHour, uint workedHours);
 
     constructor() {
         owner = msg.sender;
@@ -36,14 +39,13 @@ contract salary {
             workerName: _workerName,
             worker: _worker,
             salForHour: _salForHour,
-            workedHours: _workedHours
+            workedHours: _workedHours,
+            doneSalary: false
         });
 
         sals.push(newWorkerSal);
 
-        // emit WorkerCreated(sals.length - 1, _worker, , duration); 
-
-        // pay(_worker, calcTotalToPay(_workedHours, _salForHour, _absentDAys, medDays, _medicDays));
+        emit AddWorker(_workerName, _worker, _salForHour, _workedHours);
     }
 
 
@@ -57,10 +59,10 @@ contract salary {
         uint calculatedSal = 0 ether;
         
         for(uint i = 0; i < sals.length; i++){
-            // calculatedSal = sals[i].salForHour * sals[i].workedHours;
-            // sals[i].worker.transfer(sals[i].calculatedSal);
-
-            sals[i].worker.transfer(sals[i].salForHour * sals[i].workedHours);
+            if(sals[i].doneSalary != true){
+                sals[i].worker.transfer(sals[i].salForHour * sals[i].workedHours);
+                sals[i].doneSalary = true;
+            }
         }
     }
 
@@ -81,6 +83,9 @@ contract salary {
 
 // 0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199   10003
 // 0xdD2FD4581271e230360230F9337D5c0430Bf44C0   10003
+// 0xbDA5747bFD65F08deb54cb465eB87D40e51B197E   
+// 0x2546BcD3c84621e976D8185a91A922aE77ECEc30
+// 0xcd3B766CCDd6AE721141F452C550Ca635964ce71
 
 // 1000000000000000000
 
