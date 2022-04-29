@@ -8,7 +8,17 @@ function App() {
     console.log("Connected");
     
     if(window.ethereum){
-      console.log("Yas");
+      console.log("Yes");
+
+      try {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        })
+        console.log(accounts)
+      } catch (error) {
+        console.log("error connecting")
+      }
+
     } else {
       console.log("not detected");
     }
