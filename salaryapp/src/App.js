@@ -29,7 +29,12 @@ function App() {
 
   async function connectWallet() {
     if(window.ethereum){
-      window.ethereum.request({method: "eth_requestAccounts"});
+      console.log("1")
+      window.ethereum.request({method: "eth_requestAccounts"})
+      .then(result => result[0]);
+        alert("connected")
+    } else {
+      console.log("error");
     }
     // if(typeof window.ethereum !== 'undefiend'){
     //   await requestAcc();
@@ -42,7 +47,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <button onClick={connectWallet}>Metamask</button>
-        <h3>Connected {walletAddress}</h3>
       </header>
     </div>
   );
