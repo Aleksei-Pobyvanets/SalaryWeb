@@ -4,7 +4,6 @@ import { ethers } from 'ethers';
 import contractABI from './contractABI.json';
 
 function App() {
-  const Salary = () => {
 
     const contractAddr = '0xBEc49fA140aCaA83533fB00A2BB19bDdd0290f25';
 
@@ -19,7 +18,10 @@ function App() {
     if(window.ethereum){
       console.log("1")
       window.ethereum.request({method: "eth_requestAccounts"})
-      .then(result => result[0]);
+      .then(result => {
+        accountChanged(result[0])
+        
+      });
         alert("connected")
     } else {
       console.log("error");
@@ -42,8 +44,6 @@ function App() {
       setContract(tempContract);
     }
 
-  }
-
 
   
 
@@ -51,6 +51,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <button onClick={connectWalletHandler}>Metamask</button>
+        <h3>Address {defaultAccount}</h3>
       </header>
     </div>
   );
