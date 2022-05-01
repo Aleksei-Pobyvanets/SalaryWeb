@@ -1,19 +1,21 @@
-import logo from './logo.svg';
+import React, {useState} from 'react'
 import './App.css';
 import { ethers } from 'ethers';
-import { useState } from 'react';
-import contractABI from '../../salary/artifacts/contracts/salary.sol/salary.json'
+import contractABI from './contractABI.json';
 
 function App() {
-  const salary = () => {
+  const Salary = () => {
 
+    const contractAddr = '0xBEc49fA140aCaA83533fB00A2BB19bDdd0290f25';
 
     const [defaultAccount, setDefaultAccount] = useState(null);
     const [walletAddress, setWalletAddress] = useState("");
+
     const [provider, setProvider] = useState(null);
     const [singer, setSinger] = useState(null);
+    const [contract, setContract] = useState(null);
 
-    async function connectWallet() {
+    async function connectWalletHandler() {
     if(window.ethereum){
       console.log("1")
       window.ethereum.request({method: "eth_requestAccounts"})
@@ -36,7 +38,8 @@ function App() {
       let tempSinger = tempProvider.getSigner();
       setSinger(tempSinger);
 
-      let tempContract = new ethers.Contract(,contractABI ,tempSinger)
+      let tempContract = new ethers.Contract(contractAddr, contractABI ,tempSinger);
+      setContract(tempContract);
     }
 
   }
@@ -47,7 +50,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <button onClick={connectWallet}>Metamask</button>
+        <button onClick={connectWalletHandler}>Metamask</button>
       </header>
     </div>
   );

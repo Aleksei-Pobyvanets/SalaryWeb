@@ -1,0 +1,174 @@
+[
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "workerName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "worker",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "salForHour",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "workedHours",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timeLastSalary",
+				"type": "uint256"
+			}
+		],
+		"name": "AddWorker",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "index",
+				"type": "uint256"
+			}
+		],
+		"name": "checkWorkers",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_workerName",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_salForHour",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address payable",
+				"name": "_worker",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_workedHours",
+				"type": "uint256"
+			}
+		],
+		"name": "createWorkersSal",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "paySal",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "index",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_str",
+				"type": "string"
+			}
+		],
+		"name": "rename",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "takeEther",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "chackEther",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "sals",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "workerName",
+				"type": "string"
+			},
+			{
+				"internalType": "address payable",
+				"name": "worker",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "salForHour",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "workedHours",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "doneSalary",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "timeLastSalary",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
