@@ -5,11 +5,11 @@ import contractABI from './contractABI.json';
 
 function App() {
 
-    const contractAddr = '0xBEc49fA140aCaA83533fB00A2BB19bDdd0290f25';
+    const contractAddr = '0x5FbDB2315678afecb367f032d93F642f64180aa3';
 
     const [defaultAccount, setDefaultAccount] = useState(null);
     // const [walletAddress, setWalletAddress] = useState("");
-    const [currentContractVal, setCurrentContractVal] = useState(null);
+    // const [currentContractVal, setCurrentContractVal] = useState(null);
 
     const [provider, setProvider] = useState(null);
     const [signer, setSigner] = useState(null);
@@ -45,15 +45,19 @@ function App() {
       setContract(tempContract);
     }
 
-    const setHandler = (event) => {
-      event.preventDefault();
-      console.log(event.target.setVal.value);
-      contract.set(event.target.setVal.value);
-    }
+    // const setHandler = (event) => {
+    //   event.preventDefault();
+    //   console.log(event.target.setVal.value);
+    //   contract.set(event.target.setVal.value);
+    // }
 
     const chackBal = async () =>{
-      let val = await contract.chackEther();
-      setCurrentContractVal(val);
+      let Sigval = await signer.getBalance();
+      const Conval = await provider.getBalance(contractAddr);
+
+      const colcul = 1e18;
+      console.log(Sigval.toString() / colcul);
+      console.log(Conval.toString() / colcul);
     }
   
 
@@ -65,13 +69,19 @@ function App() {
           <button onClick={connectWalletHandler}>Metamask</button>
           <h3>Address {defaultAccount}</h3>
         </div>
-        <form onSubmit={setHandler}>
+        {/* <form onSubmit={setHandler}>
           <button type={"submit"}>Check current balance</button>
           <h3 id='setVal'>Balanse</h3>
-        </form>
+        </form> */}
         <button onClick={chackBal}>Check current balance</button>
+        <div className='inputs'>
+          <input type="text" name=""></input>
+          <input type="text" name=""></input>
+          <input type="text" name=""></input>
+          <input type="text" name=""></input>
+        </div>
       </header>
-      {currentContractVal}
+      {/* {currentContractVal} */}
     </div>
   );
 }
