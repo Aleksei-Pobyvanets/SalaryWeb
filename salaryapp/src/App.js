@@ -60,7 +60,22 @@ function App() {
       console.log(Conval.toString() / colcul);
     }
   
+    async function sendWorker() {
+      console.log(document.getElementById("name").value) 
+      let nameData = document.getElementById("name").value
+      console.log(document.getElementById("salforhour").value) 
+      let salforhourData = document.getElementById("salforhour").value
+      console.log(document.getElementById("addr").value) 
+      let addrData = document.getElementById("addr").value
+      console.log(document.getElementById("workedhour").value) 
+      let workedhourData = document.getElementById("workedhour").value
 
+      const transmit = await contract.createWorkersSal(nameData, salforhourData, addrData , workedhourData)
+    }
+    async function ch(){
+      const fk = await contract.chackEther();
+      console.log(fk)
+    }
 
   return (
     <div className="App">
@@ -75,10 +90,13 @@ function App() {
         </form> */}
         <button onClick={chackBal}>Check current balance</button>
         <div className='inputs'>
-          <input type="text" name=""></input>
-          <input type="text" name=""></input>
-          <input type="text" name=""></input>
-          <input type="text" name=""></input>
+          <input type="text" id='name' className='name' name="Name"></input>
+          <input type="text" id='salforhour' name="salary for one hour"></input>
+          <input type="text" id='addr' name="wallet address"></input>
+          <input type="text" id='workedhour' name="worked hours"></input>
+        </div>
+        <div>
+          <button onClick={sendWorker}>send</button>
         </div>
       </header>
       {/* {currentContractVal} */}
