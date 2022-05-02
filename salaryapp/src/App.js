@@ -72,10 +72,7 @@ function App() {
 
       const transmit = await contract.createWorkersSal(nameData, salforhourData, addrData , workedhourData)
     }
-    async function ch(){
-      const fk = await contract.chackEther();
-      console.log(fk)
-    }
+   
 
   return (
     <div className="App">
