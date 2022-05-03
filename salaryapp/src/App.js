@@ -15,6 +15,13 @@ function App() {
     const [signer, setSigner] = useState(null);
     const [contract, setContract] = useState(null);
 
+    // const [contractInfo, setContractInfo] = useState({
+    //   workerName: "-",
+    //   worker: "-",
+    //   salForHour: "-",
+    //   workedHours: "-"
+    // });
+
     async function connectWalletHandler() {
     if (window.ethereum && window.ethereum.isMetaMask) {
 
@@ -62,15 +69,22 @@ function App() {
   
     async function sendWorker() {
       console.log(document.getElementById("name").value) 
-      let nameData = document.getElementById("name").value
+      let nameData = await document.getElementById("name").value
+
       console.log(document.getElementById("salforhour").value) 
-      let salforhourData = document.getElementById("salforhour").value
+      let salforhourData = await document.getElementById("salforhour").value
+
       console.log(document.getElementById("addr").value) 
-      let addrData = document.getElementById("addr").value
+      let addrData = await document.getElementById("addr").value
+
       console.log(document.getElementById("workedhour").value) 
-      let workedhourData = document.getElementById("workedhour").value
+      let workedhourData = await document.getElementById("workedhour").value
 
       const transmit = await contract.createWorkersSal(nameData, salforhourData, addrData , workedhourData)
+
+      // const tokenName = await erc20.name();
+      // const tokenSymbol = await erc20.symbol();
+      // const totalSupply = await erc20.totalSupply();
     }
    
 
