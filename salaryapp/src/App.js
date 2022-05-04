@@ -92,8 +92,25 @@ function App() {
     async function checkCon() {
       const h = document.getElementById("inputIndex").value
       console.log(h)
-      const f = await contract.chackEther(h);
+      const f = await contract.sals(h);
       console.log(f)
+
+      let firstNamr = document.getElementById("wName");
+      let firstSalForH = document.getElementById("wSalForH");
+      let firstAddr = document.getElementById("wAddr");
+      let firstTime = document.getElementById("wTime");
+      return (
+       <div>
+         <h3 id='wName'></h3>
+         <h3 id='wSalForH'></h3>
+         <h3 id='wAddr'></h3>
+         <h3 id='wTime'></h3>
+       </div>
+      );
+    }
+
+    async function getSals() {
+
     }
 
   return (
@@ -117,8 +134,12 @@ function App() {
         <div>
           <button onClick={sendWorker}>send</button>
               <input type="number" id="inputIndex"></input>
-              <button onClick={checkCon}>11</button>
+              <button onClick={checkCon}>Check</button>
+              {checkCon}
         </div>
+        {/* <div>
+          <buttonn onClick={getSals}></buttonn>
+        </div> */}
       </header>
       {/* {currentContractVal} */}
     </div>
