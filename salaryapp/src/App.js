@@ -5,7 +5,7 @@ import contractABI from './contractABI.json';
 
 function App() {
 
-    const contractAddr = '0x610178dA211FEF7D417bC0e6FeD39F05609AD788';
+    const contractAddr = '0x0E801D84Fa97b50751Dbf25036d067dCf18858bF';
 
     const [defaultAccount, setDefaultAccount] = useState(null);
     // const [walletAddress, setWalletAddress] = useState("");
@@ -15,12 +15,21 @@ function App() {
     const [signer, setSigner] = useState(null);
     const [contract, setContract] = useState(null);
 
-    // const [contractInfo, setContractInfo] = useState({
-    //   workerName: "-",
-    //   worker: "-",
-    //   salForHour: "-",
-    //   workedHours: "-"
-    // });
+    const [contractInfo, setContractInfo] = useState({
+      workerName: "-",
+      worker: "-",
+      salForHour: "-",
+      workedHours: "-"
+    });
+
+
+    
+    // setContractInfo({
+    //   workerName,
+    //   worker,
+    //   salForHour,
+    //   workedHours
+    // })
 
     async function connectWalletHandler() {
     if (window.ethereum && window.ethereum.isMetaMask) {
@@ -86,7 +95,8 @@ function App() {
 
 
 
-      // let firstNamr = f.workerName(document.getElementById("wName"));
+      // let firstNamr = contract.checkCon(f);
+      // console.log(firstNamr)
       // let firstSalForH = document.getElementById("wSalForH");
       // let firstAddr = document.getElementById("wAddr");
       // let firstTime = document.getElementById("wTime");
@@ -113,10 +123,9 @@ function App() {
       console.log(document.getElementById("indexName").value) 
       let indexName = await document.getElementById("indexName").value
 
-
+      const oldName = await contract.checkWorkersName(indexNaneNumb)
+      console.log(oldName)
       const ren = await contract.rename(indexNaneNumb, indexName)
-      let h = indexNaneNumb;
-      console.log(await contract.checkCon(indexNaneNumb))
     }
 
   return (

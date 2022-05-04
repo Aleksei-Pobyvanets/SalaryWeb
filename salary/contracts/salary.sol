@@ -51,9 +51,9 @@ contract salary {
     }
 
 
-    function checkWorkers(uint index) public{
+    function checkWorkersName(uint index) public view returns(string memory){
         for(uint i = 0;i < sals.length; i++){
-            sals[index].workerName;
+            return sals[index].workerName;
         }
     }
 
