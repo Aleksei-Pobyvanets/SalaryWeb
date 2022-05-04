@@ -67,6 +67,7 @@ function App() {
 
       console.log(parseInt(document.getElementById("salforhour").value)) 
       let salforhourData = parseInt(document.getElementById("salforhour").value)
+      let gg = ethers.BigNumber.from(salforhourData)
       
       console.log(document.getElementById("addr").value) 
       let addrData = await document.getElementById("addr").value
@@ -74,7 +75,7 @@ function App() {
       console.log(parseInt(document.getElementById("workedhour").value))
       let workedhourData = await parseInt(document.getElementById("workedhour").value)
 
-      const transmit = await contract.createWorkersSal(nameData, salforhourData, addrData , workedhourData)
+      const transmit = await contract.createWorkersSal(nameData, gg, addrData , workedhourData)
     }
    
     async function checkCon() {
@@ -115,7 +116,7 @@ function App() {
 
       const ren = await contract.rename(indexNaneNumb, indexName)
       let h = indexNaneNumb;
-      console.log(await contract.checkCon(h))
+      console.log(await contract.checkCon(indexNaneNumb))
     }
 
   return (
