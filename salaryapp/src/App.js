@@ -52,12 +52,6 @@ function App() {
       setContract(tempContract);
     }
 
-    // const setHandler = (event) => {
-    //   event.preventDefault();
-    //   console.log(event.target.setVal.value);
-    //   contract.set(event.target.setVal.value);
-    // }
-
     const chackBal = async () =>{
       let Sigval = await signer.getBalance();
       const Conval = await provider.getBalance(contractAddr);
@@ -69,24 +63,18 @@ function App() {
   
     async function sendWorker() {
       console.log(document.getElementById("name").value) 
-      let nameData = document.getElementById("name").value
+      let nameData = await document.getElementById("name").value
 
       console.log(parseInt(document.getElementById("salforhour").value)) 
       let salforhourData = parseInt(document.getElementById("salforhour").value)
-      // let g = document.getElementById("salforhour").value
-      // parseInt(g)
-
+      
       console.log(document.getElementById("addr").value) 
-      let addrData = document.getElementById("addr").value
+      let addrData = await document.getElementById("addr").value
 
       console.log(parseInt(document.getElementById("workedhour").value))
-      let workedhourData = parseInt(document.getElementById("workedhour").value)
+      let workedhourData = await parseInt(document.getElementById("workedhour").value)
 
       const transmit = await contract.createWorkersSal(nameData, salforhourData, addrData , workedhourData)
-
-      // const tokenName = await erc20.name();
-      // const tokenSymbol = await erc20.symbol();
-      // const totalSupply = await erc20.totalSupply();
     }
    
     async function checkCon() {
@@ -95,22 +83,39 @@ function App() {
       const f = await contract.sals(h);
       console.log(f)
 
-      let firstNamr = document.getElementById("wName");
-      let firstSalForH = document.getElementById("wSalForH");
-      let firstAddr = document.getElementById("wAddr");
-      let firstTime = document.getElementById("wTime");
-      return (
-       <div>
-         <h3 id='wName'></h3>
-         <h3 id='wSalForH'></h3>
-         <h3 id='wAddr'></h3>
-         <h3 id='wTime'></h3>
-       </div>
-      );
+
+
+      // let firstNamr = f.workerName(document.getElementById("wName"));
+      // let firstSalForH = document.getElementById("wSalForH");
+      // let firstAddr = document.getElementById("wAddr");
+      // let firstTime = document.getElementById("wTime");
+      // return (
+      //  <div>
+      //    <h3 id='wName'></h3>
+      //    <h3 id='wSalForH'></h3>
+      //    <h3 id='wAddr'></h3>
+      //    <h3 id='wTime'></h3>
+      //  </div>
+      // );
     }
 
-    async function getSals() {
+    async function PaySal() {
+      const pay = await contract.paySal();
+      console.log("payad salary")
+    }
 
+    async function rename(){
+      
+      console.log(document.getElementById("indexNaneNumb").value) 
+      let indexNaneNumb = await document.getElementById("indexNaneNumb").value
+
+      console.log(document.getElementById("indexName").value) 
+      let indexName = await document.getElementById("indexName").value
+
+
+      const ren = await contract.rename(indexNaneNumb, indexName)
+      let h = indexNaneNumb;
+      console.log(await contract.checkCon(h))
     }
 
   return (
@@ -135,11 +140,15 @@ function App() {
           <button onClick={sendWorker}>send</button>
               <input type="number" id="inputIndex"></input>
               <button onClick={checkCon}>Check</button>
-              {checkCon}
         </div>
-        {/* <div>
-          <buttonn onClick={getSals}></buttonn>
-        </div> */}
+        <div>
+          <button onClick={PaySal}>Pay</button>
+        </div>
+        <button onClick={rename}>rename</button>
+        <div className='inputs'>
+          <input type="number" id='indexNaneNumb'></input>
+          <input type="text" id='indexName'></input>
+        </div>
       </header>
       {/* {currentContractVal} */}
     </div>
