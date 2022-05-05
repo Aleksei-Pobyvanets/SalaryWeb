@@ -91,7 +91,11 @@ function App() {
       const h = document.getElementById("inputIndex").value
       console.log(h)
       const f = await contract.sals(h);
+      
+      const j = f.salForHour.toHexString()
+      const m = parseInt(j)
       console.log(f)
+      console.log(m, "testttttt")
 
 
 
