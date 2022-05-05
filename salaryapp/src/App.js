@@ -99,8 +99,7 @@ function App() {
       console.log(checkContract)
       console.log(takeHexWorkedToNumb)
       console.log(takeHexToNumb,takeHexWorkedToNumb , "testttttt")
-
-      workedHours
+      
 
       // let firstNamr = contract.checkCon(f);
       // console.log(firstNamr)
