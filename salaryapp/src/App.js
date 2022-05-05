@@ -88,16 +88,19 @@ function App() {
     }
    
     async function checkCon() {
-      const h = document.getElementById("inputIndex").value
-      console.log(h)
-      const f = await contract.sals(h);
+      const inputIndexForCheck = document.getElementById("inputIndex").value
+      console.log(inputIndexForCheck)
+      const checkContract = await contract.sals(inputIndexForCheck);
       
-      const j = f.salForHour.toHexString()
-      const m = parseInt(j)
-      console.log(f)
-      console.log(m, "testttttt")
+      const takeHex = checkContract.salForHour.toHexString()
+      const takeHexWorked = checkContract.workedHours.toHexString()
+      const takeHexToNumb = parseInt(takeHex)
+      const takeHexWorkedToNumb = parseInt(takeHexWorked)
+      console.log(checkContract)
+      console.log(takeHexWorkedToNumb)
+      console.log(takeHexToNumb,takeHexWorkedToNumb , "testttttt")
 
-
+      workedHours
 
       // let firstNamr = contract.checkCon(f);
       // console.log(firstNamr)
