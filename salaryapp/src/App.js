@@ -89,31 +89,15 @@ function App() {
    
     async function checkCon() {
       const inputIndexForCheck = document.getElementById("inputIndex").value
-      console.log(inputIndexForCheck)
       const checkContract = await contract.sals(inputIndexForCheck);
       
       const takeHex = checkContract.salForHour.toHexString()
       const takeHexWorked = checkContract.workedHours.toHexString()
+
       const takeHexToNumb = parseInt(takeHex)
       const takeHexWorkedToNumb = parseInt(takeHexWorked)
       console.log(checkContract)
-      console.log(takeHexWorkedToNumb)
-      console.log(takeHexToNumb,takeHexWorkedToNumb , "testttttt")
-      
-
-      // let firstNamr = contract.checkCon(f);
-      // console.log(firstNamr)
-      // let firstSalForH = document.getElementById("wSalForH");
-      // let firstAddr = document.getElementById("wAddr");
-      // let firstTime = document.getElementById("wTime");
-      // return (
-      //  <div>
-      //    <h3 id='wName'></h3>
-      //    <h3 id='wSalForH'></h3>
-      //    <h3 id='wAddr'></h3>
-      //    <h3 id='wTime'></h3>
-      //  </div>
-      // );
+      console.log(takeHexToNumb, takeHexWorkedToNumb , "testttttt")
     }
 
     async function PaySal() {
@@ -141,10 +125,6 @@ function App() {
           <button onClick={connectWalletHandler}>Metamask</button>
           <h3>Address {defaultAccount}</h3>
         </div>
-        {/* <form onSubmit={setHandler}>
-          <button type={"submit"}>Check current balance</button>
-          <h3 id='setVal'>Balanse</h3>
-        </form> */}
         <button onClick={chackBal}>Check current balance</button>
         <div className='inputs'>
           <input type="text" id='name'></input>
@@ -155,7 +135,7 @@ function App() {
         <div>
           <button onClick={sendWorker}>send</button>
               <input type="number" id="inputIndex"></input>
-              <button onClick={checkCon}>Check</button>
+          <button onClick={checkCon}>Check</button>
         </div>
         <div>
           <button onClick={PaySal}>Pay</button>
@@ -166,7 +146,6 @@ function App() {
           <input type="text" id='indexName'></input>
         </div>
       </header>
-      {/* {currentContractVal} */}
     </div>
   );
 }
