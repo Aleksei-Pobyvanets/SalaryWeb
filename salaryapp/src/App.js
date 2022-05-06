@@ -14,6 +14,7 @@ function App() {
     const [provider, setProvider] = useState(null);
     const [signer, setSigner] = useState(null);
     const [contract, setContract] = useState(null);
+    const [data, setData] = useState(null);
 
     // const [contractInfo, setContractInfo] = useState({
     //   workerName: "-",
@@ -91,19 +92,10 @@ function App() {
       console.log(checkContract)
       console.log(takeHexToNumb, takeHexWorkedToNumb , "testttttt")
 
-      // return(
-      //   <div>
-      //     <h1>{takeHexToNumb}</h1>
-      //     <h1>{takeHexWorkedToNumb}</h1>
-      //   </div>
-      // )
-
-      // setContractInfo({
-      //   workerName,
-      //   worker,
-      //   salForHour: takeHexToNumb,
-      //   workedHours: takeHexWorkedToNumb
-      // })
+      setData({
+        value1: takeHexToNumb,
+        value2: takeHexWorkedToNumb
+      })
     }
 
     async function PaySal() {
@@ -123,15 +115,6 @@ function App() {
       const ren = await contract.rename(indexNaneNumb, indexName)
     }
 
-    
-
-    // constructor(props) {
-    //   super(props);
-    //   this.state = {
-    //     name: takeHexToNumb
-    //   };
-    // }
-
   return (
     <div className="App">
       <header className="App-header">
@@ -150,9 +133,10 @@ function App() {
           <button onClick={sendWorker}>send</button>
               <input type="number" id="inputIndex"></input>
           <button onClick={checkCon}>Check</button>
-          {/* <div>
-              {checkCon}
-          </div> */}
+          <div>
+              {data?.value1}
+              {data?.value2}
+          </div>
         </div>
         <div>
           <button onClick={PaySal}>Pay</button>
