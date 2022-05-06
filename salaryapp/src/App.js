@@ -15,20 +15,11 @@ function App() {
     const [signer, setSigner] = useState(null);
     const [contract, setContract] = useState(null);
 
-    const [contractInfo, setContractInfo] = useState({
-      workerName: "-",
-      worker: "-",
-      salForHour: "-",
-      workedHours: "-"
-    });
-
-
-    
-    // setContractInfo({
-    //   workerName,
-    //   worker,
-    //   salForHour,
-    //   workedHours
+    // const [contractInfo, setContractInfo] = useState({
+    //   workerName: "-",
+    //   worker: "-",
+    //   salForHour: "-",
+    //   workedHours: "-"
     // })
 
     async function connectWalletHandler() {
@@ -99,23 +90,15 @@ function App() {
       const takeHexWorkedToNumb = parseInt(takeHexWorked)
       console.log(checkContract)
       console.log(takeHexToNumb, takeHexWorkedToNumb , "testttttt")
-      return (
-        <div>
-          <h3>{takeHexToNumb}</h3>
-          <h3>{takeHexWorkedToNumb}</h3>
-        </div>
-      )
-    }
 
-    // async function paset(takeHexToNumb,takeHexWorkedToNumb) {
-    //   console.log(checkCon(takeHexWorkedToNumb))
-    //   return (
-    //     <div>
-    //       <h3>{checkCon(takeHexToNumb)}</h3>
-    //       <h3>{checkCon(takeHexWorkedToNumb)}</h3>
-    //     </div>
-    //   )
-    // }
+
+      // setContractInfo({
+      //   workerName,
+      //   worker,
+      //   salForHour: takeHexToNumb,
+      //   workedHours: takeHexWorkedToNumb
+      // })
+    }
 
     async function PaySal() {
       const pay = await contract.paySal();
@@ -133,6 +116,15 @@ function App() {
       console.log(oldName)
       const ren = await contract.rename(indexNaneNumb, indexName)
     }
+
+    
+
+    // constructor(props) {
+    //   super(props);
+    //   this.state = {
+    //     name: takeHexToNumb
+    //   };
+    // }
 
   return (
     <div className="App">
@@ -161,9 +153,9 @@ function App() {
           <input type="number" id='indexNaneNumb'></input>
           <input type="text" id='indexName'></input>
         </div>
-        <div>
+        {/* <div>
           {checkCon}
-        </div>
+        </div> */}
       </header>
     </div>
   );
