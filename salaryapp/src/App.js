@@ -86,7 +86,8 @@ function App() {
 
       const transmit = await contract.createWorkersSal(nameData, gg, addrData , workedhourData)
     }
-   
+  
+
     async function checkCon() {
       const inputIndexForCheck = document.getElementById("inputIndex").value
       const checkContract = await contract.sals(inputIndexForCheck);
@@ -98,7 +99,23 @@ function App() {
       const takeHexWorkedToNumb = parseInt(takeHexWorked)
       console.log(checkContract)
       console.log(takeHexToNumb, takeHexWorkedToNumb , "testttttt")
+      return (
+        <div>
+          <h3>{takeHexToNumb}</h3>
+          <h3>{takeHexWorkedToNumb}</h3>
+        </div>
+      )
     }
+
+    // async function paset(takeHexToNumb,takeHexWorkedToNumb) {
+    //   console.log(checkCon(takeHexWorkedToNumb))
+    //   return (
+    //     <div>
+    //       <h3>{checkCon(takeHexToNumb)}</h3>
+    //       <h3>{checkCon(takeHexWorkedToNumb)}</h3>
+    //     </div>
+    //   )
+    // }
 
     async function PaySal() {
       const pay = await contract.paySal();
@@ -106,7 +123,6 @@ function App() {
     }
 
     async function rename(){
-      
       console.log(document.getElementById("indexNaneNumb").value) 
       let indexNaneNumb = await document.getElementById("indexNaneNumb").value
 
@@ -144,6 +160,9 @@ function App() {
         <div className='inputs'>
           <input type="number" id='indexNaneNumb'></input>
           <input type="text" id='indexName'></input>
+        </div>
+        <div>
+          {checkCon}
         </div>
       </header>
     </div>
