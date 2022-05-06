@@ -91,6 +91,12 @@ function App() {
       console.log(checkContract)
       console.log(takeHexToNumb, takeHexWorkedToNumb , "testttttt")
 
+      // return(
+      //   <div>
+      //     <h1>{takeHexToNumb}</h1>
+      //     <h1>{takeHexWorkedToNumb}</h1>
+      //   </div>
+      // )
 
       // setContractInfo({
       //   workerName,
@@ -144,6 +150,9 @@ function App() {
           <button onClick={sendWorker}>send</button>
               <input type="number" id="inputIndex"></input>
           <button onClick={checkCon}>Check</button>
+          {/* <div>
+              {checkCon}
+          </div> */}
         </div>
         <div>
           <button onClick={PaySal}>Pay</button>
