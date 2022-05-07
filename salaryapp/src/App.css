@@ -17,6 +17,7 @@
   display: block;
   margin: 25px 0 0 0;
   width: 220px;
+  text-align: center;
 }
 .blockOfWorkers {
   display: block;
@@ -30,6 +31,12 @@
   margin: 0 0 10px 0;
 }
 .btnInputsP {
+  text-align: center;
+}
+.checkWorker{
+  display: block;
+  margin: 25px 0 0 0;
+  width: 220px;
   text-align: center;
 }
 /* 

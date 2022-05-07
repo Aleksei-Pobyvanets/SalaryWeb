@@ -5,7 +5,7 @@ import contractABI from './contractABI.json';
 
 function App() {
 
-    const contractAddr = '0x0E801D84Fa97b50751Dbf25036d067dCf18858bF';
+    const contractAddr = '0xfbC22278A96299D91d41C453234d97b4F5Eb9B2d';
 
     const [defaultAccount, setDefaultAccount] = useState(null);
     // const [walletAddress, setWalletAddress] = useState("");
@@ -74,7 +74,7 @@ function App() {
     async function checkCon() {
       const inputIndexForCheck = document.getElementById("inputIndex").value
       const checkContract = await contract.sals(inputIndexForCheck);
-      
+          
       const takeHexSalForHour = checkContract.salForHour.toHexString()
       const takeHexWorked = checkContract.workedHours.toHexString()
       const takeHexWorkerName = checkContract.workerName
@@ -92,6 +92,8 @@ function App() {
         salFor: takeHexSalForNumb,
         workedH: takeHexWorkedToNumb
       })
+      
+      
     }
 
     async function PaySal() {
@@ -111,14 +113,25 @@ function App() {
       const ren = await contract.rename(indexNaneNumb, indexName)
     }
 
+    async function pasetAllWorkers() {
+      let d = await contract.sals
+      for(let i = 0; i < d.length; i++) {
+        let val = contract.sals([i]);
+        console.log(val);
+      }
+    }
+
   return (
     <div className="App">
       <header className="App-header">
+
         <div className='firstDiv'>
           <h3>Your address: {defaultAccount}</h3>
           <button onClick={connectWalletHandler}>Connect Metamask</button>
         </div>
+
         <button onClick={chackBal}>Check current balance</button>
+
         <div className='inputs'>
           <div className='pInputDiv'> <input className='inputsP' type="text" id='name' placeholder="enter something"></input> </div>
           <div className='pInputDiv'> <input className='inputsP' type="number" id='salforhour' placeholder="enter salary"></input> </div>
@@ -128,9 +141,14 @@ function App() {
             <button className='btnInputsP' onClick={sendWorker}>send</button>
           </div>
         </div>
+
         <div>
-          <input type="number" id="inputIndex"></input>
-          <button onClick={checkCon}>Check</button>
+
+          <div className='checkWorker'>
+            <input type="number" id="inputIndex"></input>
+            <button onClick={checkCon}>Check</button>
+          </div>
+
           <div className='blockOfWorkers'> 
             <div className='warkedBlock'>
               <p className='pWorker'>{data?.nameWor}</p>
@@ -145,7 +163,9 @@ function App() {
                 <p className='pWorker'>{data?.workedH}</p>
             </div>
           </div>
+
         </div>
+
         <div>
           <button onClick={PaySal}>Pay</button>
         </div>
@@ -154,6 +174,9 @@ function App() {
           <input type="number" id='indexNaneNumb'></input>
           <input type="text" id='indexName'></input>
         </div>
+
+        <button onClick={pasetAllWorkers}></button>
+
       </header>
     </div>
   );
