@@ -16,13 +16,6 @@ function App() {
     const [contract, setContract] = useState(null);
     const [data, setData] = useState(null);
 
-    // const [contractInfo, setContractInfo] = useState({
-    //   workerName: "-",
-    //   worker: "-",
-    //   salForHour: "-",
-    //   workedHours: "-"
-    // })
-
     async function connectWalletHandler() {
     if (window.ethereum && window.ethereum.isMetaMask) {
 
@@ -30,11 +23,9 @@ function App() {
 			.then(result => {
 				accountChangedHandler(result[0]);
 			})
-
 		} else {
 			console.log('Need to install MetaMask');
 		}
-
   }
 
     const accountChangedHandler = (newAccount) => {
@@ -84,17 +75,18 @@ function App() {
       const inputIndexForCheck = document.getElementById("inputIndex").value
       const checkContract = await contract.sals(inputIndexForCheck);
       
-      const takeHex = checkContract.salForHour.toHexString()
+      const takeHexSalForHour = checkContract.salForHour.toHexString()
       const takeHexWorked = checkContract.workedHours.toHexString()
 
-      const takeHexToNumb = parseInt(takeHex)
+      const takeHexSalForNumb = parseInt(takeHexSalForHour)
       const takeHexWorkedToNumb = parseInt(takeHexWorked)
       console.log(checkContract)
-      console.log(takeHexToNumb, takeHexWorkedToNumb , "testttttt")
+      console.log(takeHexSalForNumb, takeHexWorkedToNumb , "testttttt")
 
       setData({
-        value1: takeHexToNumb,
-        value2: takeHexWorkedToNumb
+        // nameWor: 
+        salFor: takeHexSalForNumb,
+        workedH: takeHexWorkedToNumb
       })
     }
 
@@ -134,8 +126,10 @@ function App() {
               <input type="number" id="inputIndex"></input>
           <button onClick={checkCon}>Check</button>
           <div>
-              {data?.value1}
-              {data?.value2}
+              <h3>{data?.salFor}</h3>
+              <h3>{data?.workedH}</h3>
+              {/* <h3>{data?.salFor}</h3>
+              <h3>{data?.salFor}</h3> */}
           </div>
         </div>
         <div>
@@ -146,9 +140,6 @@ function App() {
           <input type="number" id='indexNaneNumb'></input>
           <input type="text" id='indexName'></input>
         </div>
-        {/* <div>
-          {checkCon}
-        </div> */}
       </header>
     </div>
   );
