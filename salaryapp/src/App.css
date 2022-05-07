@@ -1,7 +1,38 @@
 .App {
+  display: block;
+  margin: 20px 5% 0 5%;
+  width: 90%;
+}
+.firstDiv {
+  display: block;
   text-align: center;
 }
+.pInputDiv {
 
+}
+.warkedBlock{
+
+}
+.inputs{
+  display: block;
+  margin: 25px 0 0 0;
+  width: 220px;
+}
+.blockOfWorkers {
+  display: block;
+}
+
+.pWorker {
+  font-size: 16px;
+}
+.inputsP {
+  width: 95%;
+  margin: 0 0 10px 0;
+}
+.btnInputsP {
+  text-align: center;
+}
+/* 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -38,4 +69,4 @@
 }
 .inputs {
   display: grid;
-}
+} */

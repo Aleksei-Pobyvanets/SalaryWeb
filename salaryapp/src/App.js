@@ -77,14 +77,18 @@ function App() {
       
       const takeHexSalForHour = checkContract.salForHour.toHexString()
       const takeHexWorked = checkContract.workedHours.toHexString()
+      const takeHexWorkerName = checkContract.workerName
+      const takeHexWorkerAddr = checkContract.worker
 
       const takeHexSalForNumb = parseInt(takeHexSalForHour)
       const takeHexWorkedToNumb = parseInt(takeHexWorked)
+
       console.log(checkContract)
-      console.log(takeHexSalForNumb, takeHexWorkedToNumb , "testttttt")
+      console.log(takeHexSalForNumb, takeHexWorkedToNumb ,takeHexWorkerName, takeHexWorkerAddr ,"testttttt")
 
       setData({
-        // nameWor: 
+        nameWor: takeHexWorkerName,
+        addrWork: takeHexWorkerAddr,
         salFor: takeHexSalForNumb,
         workedH: takeHexWorkedToNumb
       })
@@ -110,26 +114,36 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div>
-          <button onClick={connectWalletHandler}>Metamask</button>
-          <h3>Address {defaultAccount}</h3>
+        <div className='firstDiv'>
+          <h3>Your address: {defaultAccount}</h3>
+          <button onClick={connectWalletHandler}>Connect Metamask</button>
         </div>
         <button onClick={chackBal}>Check current balance</button>
         <div className='inputs'>
-          <input type="text" id='name'></input>
-          <input type="number" id='salforhour'></input>
-          <input type="address" id='addr'></input>
-          <input type="number" id='workedhour'></input>
+          <div className='pInputDiv'> <input className='inputsP' type="text" id='name' placeholder="enter something"></input> </div>
+          <div className='pInputDiv'> <input className='inputsP' type="number" id='salforhour' placeholder="enter salary"></input> </div>
+          <div className='pInputDiv'> <input className='inputsP' type="address" id='addr' placeholder="enter  address"></input> </div>
+          <div className='pInputDiv'> <input className='inputsP' type="number" id='workedhour' placeholder="enter worked hours"></input> </div>
+            <div>
+            <button className='btnInputsP' onClick={sendWorker}>send</button>
+          </div>
         </div>
         <div>
-          <button onClick={sendWorker}>send</button>
-              <input type="number" id="inputIndex"></input>
+          <input type="number" id="inputIndex"></input>
           <button onClick={checkCon}>Check</button>
-          <div>
-              <h3>{data?.salFor}</h3>
-              <h3>{data?.workedH}</h3>
-              {/* <h3>{data?.salFor}</h3>
-              <h3>{data?.salFor}</h3> */}
+          <div className='blockOfWorkers'> 
+            <div className='warkedBlock'>
+              <p className='pWorker'>{data?.nameWor}</p>
+            </div>
+            <div className='warkedBlock'>
+              <p className='pWorker'>{data?.addrWork}</p>
+            </div>
+            <div className='warkedBlock'>
+                <p className='pWorker'>{data?.salFor}</p>
+            </div>
+            <div className='warkedBlock'>
+                <p className='pWorker'>{data?.workedH}</p>
+            </div>
           </div>
         </div>
         <div>
