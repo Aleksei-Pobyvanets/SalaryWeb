@@ -115,7 +115,7 @@ function App() {
 
       const countVal = await contract.count()
       const countVal1 = countVal.toHexString()
-      const countVal2 = parseInt(countVal1) 
+      const countVal2 = parseInt(countVal1)  
 
       if(countVal2 >= 0) {
         console.log(countVal2)
@@ -133,6 +133,24 @@ function App() {
 
           console.log(checkContract)
           console.log(takeHexSalForNumb, takeHexWorkedToNumb ,takeHexWorkerName, takeHexWorkerAddr ,"testttttt")
+
+          React.render (
+              <div className='blockOfWorkers'> 
+                <div className='warkedBlock'>
+                  <p className='pWorker'>{data?.nameWor} jj</p>
+                </div>
+                <div className='warkedBlock'>
+                  <p className='pWorker'>{data?.addrWork} ll</p>
+                </div>
+                <div className='warkedBlock'>
+                    <p className='pWorker'>{data?.salFor}</p>
+                </div>
+                <div className='warkedBlock'>
+                    <p className='pWorker'>{data?.workedH}</p>
+                </div>
+              </div>
+          )
+
       }
 
       }else{
@@ -195,6 +213,8 @@ function App() {
         </div>
 
         <button onClick={pasetAllWorkers}></button>
+        
+        {pasetAllWorkers}
 
       </header>
     </div>
