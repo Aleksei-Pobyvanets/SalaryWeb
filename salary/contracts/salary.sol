@@ -82,6 +82,10 @@ contract salary {
             sals[index].workerName = _str;
         }
     }
+
+    function count() public view returns(uint){
+        return sals.length;
+    }
 }
 
 // 0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199   10003

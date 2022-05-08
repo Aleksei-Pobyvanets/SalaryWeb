@@ -5,7 +5,7 @@ import contractABI from './contractABI.json';
 
 function App() {
 
-    const contractAddr = '0xfbC22278A96299D91d41C453234d97b4F5Eb9B2d';
+    const contractAddr = '0x5c74c94173F05dA1720953407cbb920F3DF9f887';
 
     const [defaultAccount, setDefaultAccount] = useState(null);
     // const [walletAddress, setWalletAddress] = useState("");
@@ -92,8 +92,6 @@ function App() {
         salFor: takeHexSalForNumb,
         workedH: takeHexWorkedToNumb
       })
-      
-      
     }
 
     async function PaySal() {
@@ -114,10 +112,31 @@ function App() {
     }
 
     async function pasetAllWorkers() {
-      let d = await contract.sals
-      for(let i = 0; i < d.length; i++) {
-        let val = contract.sals([i]);
-        console.log(val);
+
+      const countVal = await contract.count()
+      const countVal1 = countVal.toHexString()
+      const countVal2 = parseInt(countVal1) 
+
+      if(countVal2 >= 0) {
+        console.log(countVal2)
+
+        for(let i = 0; i < countVal2; i++){
+          const checkContract = await contract.sals(i);
+          
+          const takeHexSalForHour = checkContract.salForHour.toHexString()
+          const takeHexWorked = checkContract.workedHours.toHexString()
+          const takeHexWorkerName = checkContract.workerName
+          const takeHexWorkerAddr = checkContract.worker
+
+          const takeHexSalForNumb = parseInt(takeHexSalForHour)
+          const takeHexWorkedToNumb = parseInt(takeHexWorked)
+
+          console.log(checkContract)
+          console.log(takeHexSalForNumb, takeHexWorkedToNumb ,takeHexWorkerName, takeHexWorkerAddr ,"testttttt")
+      }
+
+      }else{
+        console.error()
       }
     }
 
