@@ -2,14 +2,13 @@ import React, {useState} from 'react'
 import './App.css';
 import { ethers } from 'ethers';
 import contractABI from './contractABI.json';
+import { BlockForkEvent } from '@ethersproject/abstract-provider';
 
 function App() {
 
     const contractAddr = '0x5c74c94173F05dA1720953407cbb920F3DF9f887';
 
     const [defaultAccount, setDefaultAccount] = useState(null);
-    // const [walletAddress, setWalletAddress] = useState("");
-    // const [currentContractVal, setCurrentContractVal] = useState(null);
 
     const [provider, setProvider] = useState(null);
     const [signer, setSigner] = useState(null);
@@ -23,6 +22,7 @@ function App() {
 			.then(result => {
 				accountChangedHandler(result[0]);
 			})
+      const mainDivId = document.getElementById('mainDiv').style.display = "block"
 		} else {
 			console.log('Need to install MetaMask');
 		}
@@ -134,27 +134,27 @@ function App() {
           console.log(checkContract)
           console.log(takeHexSalForNumb, takeHexWorkedToNumb ,takeHexWorkerName, takeHexWorkerAddr ,"testttttt")
 
-          React.render (
-              <div className='blockOfWorkers'> 
-                <div className='warkedBlock'>
-                  <p className='pWorker'>{data?.nameWor} jj</p>
-                </div>
-                <div className='warkedBlock'>
-                  <p className='pWorker'>{data?.addrWork} ll</p>
-                </div>
-                <div className='warkedBlock'>
-                    <p className='pWorker'>{data?.salFor}</p>
-                </div>
-                <div className='warkedBlock'>
-                    <p className='pWorker'>{data?.workedH}</p>
-                </div>
-              </div>
-          )
+          // React.render (
+          //     <div className='blockOfWorkers'> 
+          //       <div className='warkedBlock'>
+          //         <p className='pWorker'>{data?.nameWor} jj</p>
+          //       </div>
+          //       <div className='warkedBlock'>
+          //         <p className='pWorker'>{data?.addrWork} ll</p>
+          //       </div>
+          //       <div className='warkedBlock'>
+          //           <p className='pWorker'>{data?.salFor}</p>
+          //       </div>
+          //       <div className='warkedBlock'>
+          //           <p className='pWorker'>{data?.workedH}</p>
+          //       </div>
+          //     </div>
+          // )
 
       }
 
       }else{
-        console.error()
+        console.log("You have 0 workers!")
       }
     }
 
@@ -164,57 +164,61 @@ function App() {
 
         <div className='firstDiv'>
           <h3>Your address: {defaultAccount}</h3>
-          <button onClick={connectWalletHandler}>Connect Metamask</button>
+          <button className="button1" onClick={connectWalletHandler}>Connect Metamask</button>
         </div>
 
-        <button onClick={chackBal}>Check current balance</button>
+       <div id='mainDiv'>
 
-        <div className='inputs'>
-          <div className='pInputDiv'> <input className='inputsP' type="text" id='name' placeholder="enter something"></input> </div>
-          <div className='pInputDiv'> <input className='inputsP' type="number" id='salforhour' placeholder="enter salary"></input> </div>
-          <div className='pInputDiv'> <input className='inputsP' type="address" id='addr' placeholder="enter  address"></input> </div>
-          <div className='pInputDiv'> <input className='inputsP' type="number" id='workedhour' placeholder="enter worked hours"></input> </div>
-            <div>
-            <button className='btnInputsP' onClick={sendWorker}>send</button>
-          </div>
-        </div>
+          <button onClick={chackBal} className="button1">Check current balance</button>
 
-        <div>
-
-          <div className='checkWorker'>
-            <input type="number" id="inputIndex"></input>
-            <button onClick={checkCon}>Check</button>
-          </div>
-
-          <div className='blockOfWorkers'> 
-            <div className='warkedBlock'>
-              <p className='pWorker'>{data?.nameWor}</p>
-            </div>
-            <div className='warkedBlock'>
-              <p className='pWorker'>{data?.addrWork}</p>
-            </div>
-            <div className='warkedBlock'>
-                <p className='pWorker'>{data?.salFor}</p>
-            </div>
-            <div className='warkedBlock'>
-                <p className='pWorker'>{data?.workedH}</p>
+          <div className='inputs'>
+            <div className='pInputDiv'> <input className='inputsP' type="text" id='name' placeholder="enter something"></input> </div>
+            <div className='pInputDiv'> <input className='inputsP' type="number" id='salforhour' placeholder="enter salary"></input> </div>
+            <div className='pInputDiv'> <input className='inputsP' type="address" id='addr' placeholder="enter  address"></input> </div>
+            <div className='pInputDiv'> <input className='inputsP' type="number" id='workedhour' placeholder="enter worked hours"></input> </div>
+              <div>
+              <button className="button1" className='btnInputsP' onClick={sendWorker}>send</button>
             </div>
           </div>
 
-        </div>
+          <div>
 
-        <div>
-          <button onClick={PaySal}>Pay</button>
-        </div>
-        <button onClick={rename}>rename</button>
-        <div className='inputs'>
-          <input type="number" id='indexNaneNumb'></input>
-          <input type="text" id='indexName'></input>
-        </div>
+            <div className='checkWorker'>
+              <input type="number" id="inputIndex"></input>
+              <button onClick={checkCon}>Check</button>
+            </div>
 
-        <button onClick={pasetAllWorkers}></button>
-        
-        {pasetAllWorkers}
+            <div className='blockOfWorkers'> 
+              <div className='warkedBlock'>
+                <p className='pWorker'>{data?.nameWor}</p>
+              </div>
+              <div className='warkedBlock'>
+                <p className='pWorker'>{data?.addrWork}</p>
+              </div>
+              <div className='warkedBlock'>
+                  <p className='pWorker'>{data?.salFor}</p>
+              </div>
+              <div className='warkedBlock'>
+                  <p className='pWorker'>{data?.workedH}</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div>
+            <button onClick={PaySal}>Pay</button>
+          </div>
+          <button onClick={rename}>rename</button>
+          <div className='inputs'>
+            <input type="number" id='indexNaneNumb'></input>
+            <input type="text" id='indexName'></input>
+          </div>
+
+          <button onClick={pasetAllWorkers}></button>
+
+          {pasetAllWorkers}
+
+       </div>
 
       </header>
     </div>
