@@ -160,67 +160,75 @@ function App() {
 
   return (
     <div className="App">
+
+      <div class="bg"></div>
+      <div class="bg bg2"></div>
+      <div class="bg bg3"></div>
+      <div class="content">
       <header className="App-header">
 
-        <div className='firstDiv'>
-          <h3>Your address: {defaultAccount}</h3>
-          <button className="button1" onClick={connectWalletHandler} role="button">Connect Metamask</button>
+      <div className='firstDiv'>
+        <h3>Your address: {defaultAccount}</h3>
+        <button className="button-85" onClick={connectWalletHandler} role="button">Connect Metamask</button>
+      </div>
+
+      <div id='mainDiv'>
+
+        <button onClick={chackBal} className="button1">Check current balance</button>
+
+        <div className='inputs'>
+          <div className='pInputDiv'> <input className='inputsP' type="text" id='name' placeholder="enter something"></input> </div>
+          <div className='pInputDiv'> <input className='inputsP' type="number" id='salforhour' placeholder="enter salary"></input> </div>
+          <div className='pInputDiv'> <input className='inputsP' type="address" id='addr' placeholder="enter  address"></input> </div>
+          <div className='pInputDiv'> <input className='inputsP' type="number" id='workedhour' placeholder="enter worked hours"></input> </div>
+            <div>
+            <button  className='btnInputsP' onClick={sendWorker}>send</button>
+          </div>
         </div>
 
-       <div id='mainDiv'>
+        <div>
 
-          <button onClick={chackBal} className="button1">Check current balance</button>
+          <div className='checkWorker'>
+            <input type="number" id="inputIndex"></input>
+            <button onClick={checkCon}>Check</button>
+          </div>
 
-          <div className='inputs'>
-            <div className='pInputDiv'> <input className='inputsP' type="text" id='name' placeholder="enter something"></input> </div>
-            <div className='pInputDiv'> <input className='inputsP' type="number" id='salforhour' placeholder="enter salary"></input> </div>
-            <div className='pInputDiv'> <input className='inputsP' type="address" id='addr' placeholder="enter  address"></input> </div>
-            <div className='pInputDiv'> <input className='inputsP' type="number" id='workedhour' placeholder="enter worked hours"></input> </div>
-              <div>
-              <button  className='btnInputsP' onClick={sendWorker}>send</button>
+          <div className='blockOfWorkers'> 
+            <div className='warkedBlock'>
+              <p className='pWorker'>{data?.nameWor}</p>
+            </div>
+            <div className='warkedBlock'>
+              <p className='pWorker'>{data?.addrWork}</p>
+            </div>
+            <div className='warkedBlock'>
+                <p className='pWorker'>{data?.salFor}</p>
+            </div>
+            <div className='warkedBlock'>
+                <p className='pWorker'>{data?.workedH}</p>
             </div>
           </div>
 
-          <div>
+        </div>
 
-            <div className='checkWorker'>
-              <input type="number" id="inputIndex"></input>
-              <button onClick={checkCon}>Check</button>
-            </div>
+        <div>
+          <button onClick={PaySal}>Pay</button>
+        </div>
+        <button onClick={rename}>rename</button>
+        <div className='inputs'>
+          <input type="number" id='indexNaneNumb'></input>
+          <input type="text" id='indexName'></input>
+        </div>
 
-            <div className='blockOfWorkers'> 
-              <div className='warkedBlock'>
-                <p className='pWorker'>{data?.nameWor}</p>
-              </div>
-              <div className='warkedBlock'>
-                <p className='pWorker'>{data?.addrWork}</p>
-              </div>
-              <div className='warkedBlock'>
-                  <p className='pWorker'>{data?.salFor}</p>
-              </div>
-              <div className='warkedBlock'>
-                  <p className='pWorker'>{data?.workedH}</p>
-              </div>
-            </div>
+        <button onClick={pasetAllWorkers}></button>
 
-          </div>
+        {pasetAllWorkers}
 
-          <div>
-            <button onClick={PaySal}>Pay</button>
-          </div>
-          <button onClick={rename}>rename</button>
-          <div className='inputs'>
-            <input type="number" id='indexNaneNumb'></input>
-            <input type="text" id='indexName'></input>
-          </div>
-
-          <button onClick={pasetAllWorkers}></button>
-
-          {pasetAllWorkers}
-
-       </div>
+      </div>
 
       </header>
+      </div>
+
+
     </div>
   );
 }
