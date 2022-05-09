@@ -164,7 +164,7 @@ function App() {
 
         <div className='firstDiv'>
           <h3>Your address: {defaultAccount}</h3>
-          <button className="button1" onClick={connectWalletHandler}>Connect Metamask</button>
+          <button className="button1" onClick={connectWalletHandler} role="button">Connect Metamask</button>
         </div>
 
        <div id='mainDiv'>
@@ -177,7 +177,7 @@ function App() {
             <div className='pInputDiv'> <input className='inputsP' type="address" id='addr' placeholder="enter  address"></input> </div>
             <div className='pInputDiv'> <input className='inputsP' type="number" id='workedhour' placeholder="enter worked hours"></input> </div>
               <div>
-              <button className="button1" className='btnInputsP' onClick={sendWorker}>send</button>
+              <button  className='btnInputsP' onClick={sendWorker}>send</button>
             </div>
           </div>
 
