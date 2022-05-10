@@ -23,6 +23,10 @@ function App() {
 				accountChangedHandler(result[0]);
 			})
       const mainDivId = document.getElementById('mainDiv').style.display = "block"
+      const firstDivHello1 = document.getElementById('firstDivHello').style.display = "none"
+      const firstDivH31 = document.getElementById('firstDivH3').style.display = "block"
+      const firstDiv1 = document.getElementById('firstDivId').style.display = "none"
+      
 		} else {
 			console.log('Need to install MetaMask');
 		}
@@ -152,8 +156,9 @@ function App() {
       <div class="content">
       <header className="App-header">
 
-      <div className='firstDiv'>
-        <h3>Your address: {defaultAccount}</h3>
+      <div className='firstDiv' id='firstDivId'>
+        <h1 id="firstDivHello">Hello, connect your Metamask!</h1>
+        <h3 id="firstDivH3">Your address: {defaultAccount}</h3>
         <button className="button-85" onClick={connectWalletHandler} role="button">Connect Metamask</button>
       </div>
 
