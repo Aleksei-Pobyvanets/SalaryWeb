@@ -14,6 +14,7 @@ function App() {
     const [signer, setSigner] = useState(null);
     const [contract, setContract] = useState(null);
     const [data, setData] = useState(null);
+    const [doneCalc, setCalc] = useState(null);
 
     async function connectWalletHandler() {
     if (window.ethereum && window.ethereum.isMetaMask) {
@@ -53,8 +54,12 @@ function App() {
       const Conval = await provider.getBalance(contractAddr);
 
       const colcul = 1e18;
+      const doneColc = Conval.toString() / colcul
+
+      setCalc(doneColc);
+
       console.log(Sigval.toString() / colcul);
-      console.log(Conval.toString() / colcul);
+      console.log(doneColc);
     }
   
     async function sendWorker() {
@@ -163,9 +168,12 @@ function App() {
       </div>
 
       <div id='mainDiv'>
-
-        <button onClick={chackBal} className="button1">Check current balance</button>
-
+   
+        <div className='balanceDiv'>
+          <button onClick={chackBal} className="button1">Check current balance</button>
+          <h1 className='balanceH1'>{doneCalc}</h1>
+        </div>
+        
         <div className='inputs'>
           <div className='pInputDiv'> <input className='inputsP' type="text" id='name' placeholder="enter something"></input> </div>
           <div className='pInputDiv'> <input className='inputsP' type="number" id='salforhour' placeholder="enter salary"></input> </div>

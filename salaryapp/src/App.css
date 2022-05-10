@@ -62,6 +62,13 @@ body {
 .pInputDiv {
 
 }
+.balanceDiv{
+  display: block;
+  width: 250px;
+}
+.balanceH1{
+  font-size: 16px;
+}
 .warkedBlock{
 
 }
