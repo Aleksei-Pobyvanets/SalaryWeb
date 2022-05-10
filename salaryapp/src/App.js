@@ -86,12 +86,7 @@ function App() {
       console.log(checkContract)
       console.log(takeHexSalForNumb, takeHexWorkedToNumb ,takeHexWorkerName, takeHexWorkerAddr ,"testttttt")
 
-      setData({
-        nameWor: takeHexWorkerName,
-        addrWork: takeHexWorkerAddr,
-        salFor: takeHexSalForNumb,
-        workedH: takeHexWorkedToNumb
-      })
+      
     }
 
     async function PaySal() {
@@ -134,22 +129,12 @@ function App() {
           console.log(checkContract)
           console.log(takeHexSalForNumb, takeHexWorkedToNumb ,takeHexWorkerName, takeHexWorkerAddr ,"testttttt")
 
-          // React.render (
-          //     <div className='blockOfWorkers'> 
-          //       <div className='warkedBlock'>
-          //         <p className='pWorker'>{data?.nameWor} jj</p>
-          //       </div>
-          //       <div className='warkedBlock'>
-          //         <p className='pWorker'>{data?.addrWork} ll</p>
-          //       </div>
-          //       <div className='warkedBlock'>
-          //           <p className='pWorker'>{data?.salFor}</p>
-          //       </div>
-          //       <div className='warkedBlock'>
-          //           <p className='pWorker'>{data?.workedH}</p>
-          //       </div>
-          //     </div>
-          // )
+          setData({
+            nameWor: takeHexWorkerName,
+            addrWork: takeHexWorkerAddr,
+            salFor: takeHexSalForNumb,
+            workedH: takeHexWorkedToNumb
+          })
 
       }
 
