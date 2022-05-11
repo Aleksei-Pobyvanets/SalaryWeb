@@ -23,7 +23,7 @@ function App() {
 			.then(result => {
 				accountChangedHandler(result[0]);
 			})
-      const mainDivId = document.getElementById('mainDiv').style.display = "block"
+      const mainDivId = document.getElementById('mainDiv').style.display = "flex"
       const firstDivHello1 = document.getElementById('firstDivHello').style.display = "none"
       const firstDivH31 = document.getElementById('firstDivH3').style.display = "block"
       const firstDiv1 = document.getElementById('firstDivId').style.display = "none"
@@ -150,6 +150,8 @@ function App() {
       }else{
         console.log("You have 0 workers!")
       }
+            
+
     }
 
   return (
@@ -180,6 +182,10 @@ function App() {
             </div> */}
 
             <button onClick={pasetAllWorkers} className='button-85'>Get all workers</button>
+
+
+
+
 
             {pasetAllWorkers}
 

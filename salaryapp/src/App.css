@@ -67,6 +67,7 @@ body {
   width: 250px;
 }
 .balanceH1{
+  display: block;
   font-size: 16px;
 }
 .warkedBlock{
@@ -104,6 +105,7 @@ body {
 }
 #mainDiv {
   display: none;
+  justify-content: space-between;
 }
 
 .button-85 {
@@ -124,3 +126,4 @@ body {
   display: block;
   width: 350px;
 }
+
