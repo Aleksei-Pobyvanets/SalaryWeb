@@ -120,3 +120,7 @@ body {
   -webkit-user-select: none;
   touch-action: manipulation;
 }
+.workersShow{
+  display: block;
+  width: 350px;
+}
