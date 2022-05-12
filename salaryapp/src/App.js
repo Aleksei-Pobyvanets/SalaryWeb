@@ -191,16 +191,16 @@ function App() {
 
             <div className='blockOfWorkers'> 
               <div className='warkedBlock'>
-                <p className='pWorker'>{data?.nameWor}</p>
+                <p className='pWorker'>Name: {data?.nameWor}</p>
               </div>
               <div className='warkedBlock'>
-                <p className='pWorker'>{data?.addrWork}</p>
+                <p className='pWorker'>Address: {data?.addrWork}</p>
               </div>
               <div className='warkedBlock'>
-                  <p className='pWorker'>{data?.salFor}</p>
+                  <p className='pWorker'>Salary for hour: {data?.salFor}</p>
               </div>
               <div className='warkedBlock'>
-                  <p className='pWorker'>{data?.workedH}</p>
+                  <p className='pWorker'>Worked hours: {data?.workedH}</p>
               </div>
             </div>
 
