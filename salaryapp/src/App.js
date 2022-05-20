@@ -137,6 +137,9 @@ function App() {
 
           console.log(checkContract)
           console.log(takeHexSalForNumb, takeHexWorkedToNumb ,takeHexWorkerName, takeHexWorkerAddr ,"testttttt")
+          let arr = [takeHexSalForNumb, takeHexWorkedToNumb ,takeHexWorkerName, takeHexWorkerAddr]
+          console.log(arr)
+          console.log(arr.length + 1)
 
           setData({
             nameWor: takeHexWorkerName,
@@ -175,11 +178,6 @@ function App() {
 
       <div className='mainDivLeft'>
             <div className='workersShow'>
-
-            {/* <div className='checkWorker'>
-              <input type="number" id="inputIndex"></input>
-              <button onClick={checkCon}>Check</button>
-            </div> */}
 
             <button onClick={pasetAllWorkers} className='button-85'>Get all workers</button>
 
